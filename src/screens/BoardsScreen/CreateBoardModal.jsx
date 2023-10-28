@@ -28,7 +28,7 @@ const CreateBoardModal = ({closeModal}) => {
             setLoading(false);
             console.log(err);
         }
-    }
+    };
 
     return (
         <Dialog open onClose={closeModal} fullWidth maxWidth="xs">

@@ -4,6 +4,7 @@ import LogoImg from '../../assets/logo.svg';
 import ImageEl from '../../components/utils/ImageEl';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase';
+import useStore from '../../store';
 
 const initForm = {
     email: "",
@@ -13,6 +14,7 @@ const initForm = {
     const [loading, setLoading] = useState(false);
     const [isLogin, setIsLogin] = useState(true);
     const [form, setForm] = useState(initForm);
+    const { setToastr } = useStore();
   
   
     const authText = isLogin
@@ -35,7 +37,7 @@ const initForm = {
         }
       } catch (err) {
         const msg = err.code.split("auth/")[1].split("-").join(" ");
-        console.log(msg);
+        setToastr(msg);
         setLoading(false);
       }
     };
